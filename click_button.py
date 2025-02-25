@@ -54,7 +54,10 @@ driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
 try:
     # Open the website
     driver.get('https://mycutebaby.in/contest/participant/679e77f65b140')
-
+    driver.add_cookie({'name': 'PHPSESSID', 'value': 'bcf33af2825effe3a5668681ae270f40'})
+    time.sleep(2)
+    # to refresh the page
+    driver.refresh()
     # Wait for the page to load
     time.sleep(10)
 
@@ -71,10 +74,6 @@ try:
     # Scroll the button into view
     driver.execute_script("arguments[0].scrollIntoView(true);", vote_button)
     time.sleep(2)  # Wait for scrolling to complete
-
-    # fill the text field with the name "Junnu Gajula" with id = v 
-    name_field = driver.find_element(By.ID, 'v')
-    name_field.send_keys("Mumbai cha Raja")
 
 
     # Use JavaScript to click the button (to bypass overlapping elements)
